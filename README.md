@@ -32,6 +32,8 @@
 
 <img width="650" height="131" alt="image" src="https://github.com/user-attachments/assets/daea4fa0-1713-453e-bffe-ebda4e0eeab1" />
 
+- 
+
 <br>
 <br>
 
@@ -42,3 +44,63 @@
 ```
 git clone https://github.com/micro-ROS/micro_ros_stm32cubemx_utils.git
 ```
+
+- 이후 도커 컨테이너 실행
+
+<pre>
+docker run -it --rm \
+  -v $(pwd):/project \
+  -e MICROROS_LIBRARY_FOLDER=micro_ros_stm32cubemx_utils/microros_static_library \
+  microros/micro_ros_static_library_builder:humble
+</pre>
+
+- 라이브러리 파일 확인
+
+<pre>
+ls micro_ros_stm32cubemx_utils/microros_static_library/libmicroros 
+available_ros2_types	built_packages		libmicroros.a		microros_include
+</pre>
+
+- Project - Properties - C/C++ Build -> Settings -> MCU GCC Compiler -> Includes 추가
+
+<img width="835" height="758" alt="image" src="https://github.com/user-attachments/assets/5dd8482b-7138-473f-87d1-97c5a3f30297" />
+
+<br>
+
+- Project - Properties - C/C++ Build -> Settings -> MCU GCC Linker -> Libraries (-L) 에추가
+
+<img width="812" height="767" alt="image" src="https://github.com/user-attachments/assets/1584c50c-99cd-41be-9710-650753ee7c7f" />
+
+
+<br>
+
+- 프로젝트 우측 클릭 -> New -> Other -> General -> File -> Advanced -> Link to file in the file system 체크 -> Browse.. 후 파일 4개 추가
+
+<pre>
+micro_ros_stm32cubemx_utils/extra_sources/custom_memory_manager.c
+micro_ros_stm32cubemx_utils/extra_sources/microros_time.c
+micro_ros_stm32cubemx_utils/extra_sources/microros_allocators.c
+micro_ros_stm32cubemx_utils/extra_sources/microros_transports/dma_transport.c
+</pre>
+
+<img width="579" height="684" alt="image" src="https://github.com/user-attachments/assets/41252579-b2e1-44e5-8276-d5d9d95183ef" />
+
+<br>
+
+<img width="242" height="86" alt="image" src="https://github.com/user-attachments/assets/b5daf8f5-ba3c-4d12-93f4-9a79ea515d28" />
+
+<br>
+
+- Project -> Properties -> C/C++ Build -> Settings -> MCU GCC Compiler -> PreProcessor - Include - RMW_UXRCE_TRANSPORT_CUSTOM 추가
+
+<img width="810" height="772" alt="image" src="https://github.com/user-attachments/assets/47703e0a-2547-4b61-ae8b-60fab7f22271" />
+
+<br>
+
+이전에 추가한 dma_transport.c 에서 전처리문을 추가하는 과정
+<br>
+
+<img width="649" height="204" alt="image" src="https://github.com/user-attachments/assets/a0098e16-3560-44ec-a79f-5538139b65c7" />
+
+<br>
+
