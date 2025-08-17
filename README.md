@@ -61,15 +61,16 @@ ls micro_ros_stm32cubemx_utils/microros_static_library/libmicroros
 available_ros2_types	built_packages		libmicroros.a		microros_include
 </pre>
 
-- Project - Properties - C/C++ Build -> Settings -> MCU GCC Compiler -> Includes 추가
+- Project - Properties - C/C++ Build -> Settings -> MCU GCC Compiler -> Include -> Add -> Workspace ... 후 추가
 
-<img width="835" height="758" alt="image" src="https://github.com/user-attachments/assets/5dd8482b-7138-473f-87d1-97c5a3f30297" />
+<img width="808" height="772" alt="image" src="https://github.com/user-attachments/assets/baf38e9d-59e9-41ed-b317-72d2c4fc5f99" />
 
 <br>
 
-- Project - Properties - C/C++ Build -> Settings -> MCU GCC Linker -> Libraries (-L) 에추가
+- Project - Properties - C/C++ Build -> Settings -> MCU GCC Linker -> Libraries (-L) -> Add -> Workspace... 후 추가
 
-<img width="812" height="767" alt="image" src="https://github.com/user-attachments/assets/1584c50c-99cd-41be-9710-650753ee7c7f" />
+<img width="803" height="766" alt="image" src="https://github.com/user-attachments/assets/7c1163d6-bfa5-4bd5-9e31-4d02925080c5" />
+
 
 
 <br>
